@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Entity
-@Table(name = "tables")
+@Table(name = "bookings")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +21,7 @@ public class Booking {
     private String organiserName;
 
     @Positive
-    private BigDecimal attendeeCount;
+    private int attendeeCount;
 
     @NotNull
     private Long roomId;

@@ -17,13 +17,14 @@ public class BookingService {
 
     public BookingResponse createBooking(Booking booking){
         booking.setBookingId(null);
+        booking.setRoomStatus("ACTIVE");
         repo.save(booking);
         BookingResponse bookingResponse = new BookingResponse();
         bookingResponse.setBookingId(booking.getBookingId());
         bookingResponse.setOrganiserName(booking.getOrganiserName());
         bookingResponse.setAttendeeCount(booking.getAttendeeCount());
         bookingResponse.setRoomId(booking.getRoomId());
-        bookingResponse.setRoomStatus("Active");
+        bookingResponse.setRoomStatus("ACTIVE");
         return bookingResponse;
     }
 
