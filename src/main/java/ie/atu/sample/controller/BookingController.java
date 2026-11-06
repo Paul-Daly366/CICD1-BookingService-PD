@@ -1,5 +1,6 @@
 package ie.atu.sample.controller;
 
+import ie.atu.sample.dto.BookingResponse;
 import ie.atu.sample.model.Booking;
 import ie.atu.sample.service.BookingService;
 import org.springframework.http.HttpStatus;
@@ -16,13 +17,12 @@ public class BookingController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Booking createBooking(Booking booking){
-
+    public BookingResponse createBooking(Booking booking){
         return bookingService.createBooking(booking);
     }
 
     @GetMapping("/{id}")
-    public Booking getBookingById(@PathVariable Long id){
+    public BookingResponse getBookingById(@PathVariable Long id){
         return bookingService.getBookingById(id);
     }
 }

@@ -1,5 +1,6 @@
 package ie.atu.sample.service;
 
+import ie.atu.sample.dto.BookingResponse;
 import ie.atu.sample.model.Booking;
 import ie.atu.sample.repository.BookingRepository;
 import org.springframework.http.HttpStatus;
@@ -14,14 +15,26 @@ public class BookingService {
         this.repo = repo;
     }
 
-    public Booking createBooking(Booking booking){
+    public BookingResponse createBooking(Booking booking){
         booking.setBookingId(null);
-        //repo.save(booking);
-        //BookingResponse bookingResponse = new BookingResponse();
-        return repo.save(booking);
+        repo.save(booking);
+        BookingResponse bookingResponse = new BookingResponse();
+        bookingResponse.setBookingId(booking.getBookingId());
+        bookingResponse.setOrganiserName(booking.getOrganiserName());
+        bookingResponse.setAttendeeCount(booking.getAttendeeCount());
+        bookingResponse.setRoomId(booking.getRoomId());
+        bookingResponse.setRoomStatus("Active");
+        return bookingResponse;
     }
 
-    public Booking getBookingById(Long id){
-        return repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Booking not found"));
+    public BookingResponse getBookingById(Long id){
+        Booking booking = repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Booking not found"));
+        BookingResponse bookingResponse = new BookingResponse();
+        bookingResponse.setBookingId(booking.getBookingId());
+        bookingResponse.setOrganiserName(booking.getOrganiserName());
+        bookingResponse.setAttendeeCount(booking.getAttendeeCount());
+        bookingResponse.setRoomId(booking.getRoomId());
+        bookingResponse.setRoomStatus("Active");
+        return bookingResponse;
     }
 }
