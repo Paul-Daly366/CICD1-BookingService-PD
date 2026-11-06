@@ -15,6 +15,9 @@ public class BookingService {
     }
 
     public Booking createBooking(Booking booking){
+        booking.setBookingId(null);
+        //repo.save(booking);
+        //BookingResponse bookingResponse = new BookingResponse();
         return repo.save(booking);
     }
 

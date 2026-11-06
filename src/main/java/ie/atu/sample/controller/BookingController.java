@@ -17,7 +17,7 @@ public class BookingController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Booking createBooking(Booking booking){
-        booking.setBookingId(null);
+
         return bookingService.createBooking(booking);
     }
 

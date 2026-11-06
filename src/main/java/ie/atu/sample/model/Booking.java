@@ -1,15 +1,10 @@
 package ie.atu.sample.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 
@@ -23,14 +18,14 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    @Min(2)
+    @Size(min = 2)
     @NotBlank
     private String organiserName;
 
     @Positive
     private BigDecimal attendeeCount;
 
-    @NotEmpty
+    @NotNull
     private Long roomId;
 
     private String roomStatus;
